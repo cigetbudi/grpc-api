@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package protobuf;
+
+message User {
+    int32 uid =1;
+    string name = 2;
+    string nationality =3 ;
+    int32 zip = 4;
+}
+
+message GetUserReq {
+    int32 uid =1;
+}
+
+message GetUserResp {
+    User user =1;
+}
+
+message CreateUserReq {
+    User user = 1;
+  }
+  
+  message CreateUserResp{
+    User user = 1;
+  }
+  
+  message UpdateUserReq {
+    User user = 1;
+  }
+  
+  message UpdateUserResp {
+    User user = 1;
+  }
+  
+  message DeleteUserReq{
+    int32 uid = 1;
+  }
+  
+  message DeleteUserResp{
+    int32 uid = 1;
+  }
+
+  service UserService {
+    rpc GetUser(GetUserReq) returns (GetUserResp);
+    rpc CreateUser(CreateUserReq) returns (CreateUserResp);
+    rpc UpdateUser(UpdateUserReq) returns (UpdateUserResp);
+    rpc DeleteUser(DeleteUserReq) returns (DeleteUserResp);
+  }
